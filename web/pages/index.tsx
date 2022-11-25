@@ -1,8 +1,13 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import client from '../client'
+import { WelcomeInformation } from '../model/welcome'
 
-export default function Home() {
+export default function Home({
+  welcomeInformation,
+}: {
+  welcomeInformation: WelcomeInformation
+}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -12,7 +17,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Welcome to Bad Boi Eats</h1>
+        <h1 className={styles.title}>{welcomeInformation.title}</h1>
+        <p>{welcomeInformation.description}</p>
       </main>
     </div>
   )
