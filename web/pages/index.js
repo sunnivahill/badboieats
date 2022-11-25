@@ -17,3 +17,15 @@ export default function Home() {
     </div>
   )
 }
+
+export async function getServerSideProps() {
+  const welcomeInformation = await client.fetch(
+    `*[_type == "welcomeInformation"][0]`
+  )
+
+  return {
+    props: {
+      welcomeInformation,
+    },
+  }
+}
